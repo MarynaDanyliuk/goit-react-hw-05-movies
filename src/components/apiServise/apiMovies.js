@@ -3,7 +3,6 @@ import axios from 'axios';
 export const getMovies = async () => {
   const { data } = await axios.get(
     `https://api.themoviedb.org/3/trending/all/day?api_key=6de1479941bef67a0c224787b78603f1`
-    // `https://api.themoviedb.org/3/movie/550?api_key=6de1479941bef67a0c224787b78603f1`
   );
   return data;
 };
