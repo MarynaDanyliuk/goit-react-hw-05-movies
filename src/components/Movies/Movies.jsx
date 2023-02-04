@@ -44,7 +44,7 @@ const Movies = () => {
     fetchMovies();
 
     console.log('запускаємо useEffect');
-  }, []);
+  });
 
   return <ul></ul>;
 };
