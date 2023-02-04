@@ -1,7 +1,10 @@
+import Movies from 'components/Movies/Movies';
+
 const HomePage = () => {
   return (
     <div className="container">
-      <h2>Movies page</h2>
+      <h2>Home page</h2>
+      <Movies />
     </div>
   );
 };
