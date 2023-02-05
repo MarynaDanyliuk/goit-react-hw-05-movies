@@ -44,7 +44,7 @@ const Movies = () => {
     fetchMovies();
 
     console.log('запускаємо useEffect');
-  }, [setState]);
+  }, [state, setState]);
 
   const { items, loading, error } = state;
 
