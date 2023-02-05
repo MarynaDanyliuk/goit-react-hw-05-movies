@@ -1,14 +1,17 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
-import { getMovies } from 'components/apiServise/apiMovies';
+import { getSingleMovie } from 'components/apiServise/apiMovies';
 
-const Movies = () => {
+const SingleMoviePage = () => {
   const [state, setState] = useState({
-    items: [],
+    item: {},
     loading: false,
     error: null,
   });
+
+  const { movieId } = useParams();
+  console.log(movieId);
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -18,12 +21,12 @@ const Movies = () => {
           loading: true,
           error: null,
         }));
-        const result = await getMovies();
+        const result = await getSingleMovie(movieId);
         console.log(result);
         setState(prevState => {
           return {
             ...prevState,
-            items: [...result.results],
+            item: result,
           };
         });
       } catch (error) {
@@ -44,22 +47,35 @@ const Movies = () => {
     fetchMovies();
 
     console.log('запускаємо useEffect');
-  }, [setState]);
+  }, [movieId]);
 
-  const { items, loading, error } = state;
+  const {
+    title,
+    release_date,
+    overview,
+    vote_averag,
+    genres: { id, name },
+  } = state.item;
 
-  const listMovies = items.map(item => (
-    <li key={item.id}>
-      <Link to={`/movies/${item.id}`}>{item.title}</Link>
-    </li>
-  ));
+  // "genres": [
+  // {
+  //   "id": 18,
+  //   "name": "Drama"
+  // }
 
   return (
-    <div>
-      <ul>{listMovies}</ul>
-      {loading && <p>...loading</p>}
-      {error && <p>...load failed</p>}
+    <div className="container">
+      <h2>
+        {title}
+        {release_date}
+      </h2>
+      <p>{overview}</p>
+      <p>{vote_averag}</p>
+      <p>
+        {id}
+        {name}
+      </p>
     </div>
   );
 };
-export default Movies;
+export default SingleMoviePage;
