@@ -11,11 +11,6 @@ const Movies = () => {
   });
 
   useEffect(() => {
-    setState({
-      ...state,
-      loading: true,
-      error: null,
-    });
     const fetchMovies = async () => {
       setState({
         ...state,
@@ -25,7 +20,6 @@ const Movies = () => {
       try {
         const result = await getMovies();
         console.log(result);
-
         setState(prevState => {
           return {
             ...prevState,
@@ -47,51 +41,47 @@ const Movies = () => {
       }
     };
 
-    // const data = getMovies();
-
-    // data
-    //   .then(response => {
-    //     console.log(response);
-    //     setState(prevState => {
-    //       return {
-    //         ...prevState,
-    //         items: [...response.results],
-    //       };
-    //     });
-    //   })
-    //   .catch(error => console.log('Error'))
-    //   .finally(
-    //     setState(prevState => {
-    //       return {
-    //         ...prevState,
-    //         loading: false,
-    //       };
-    //     })
-    //   );
-
     fetchMovies();
 
     console.log('запускаємо useEffect');
-  }, []);
+  }, [setState]);
 
-  //   const listMovies = items.map(item => (
-  //     <li key={item.id}>
-  //       <Link to={`/movies/:${item.id}`}>{item.title}</Link>
-  //     </li>
-  //   ));
-  // const { items, loading, error } = state;
+  const { items, loading, error } = state;
+
+  const listMovies = items.map(item => (
+    <li key={item.id}>
+      <Link to={`/movies/:${item.id}`}>{item.title}</Link>
+    </li>
+  ));
+
   return (
     <div>
-      <ul>
-        {state.items.map(item => (
-          <li key={item.id}>
-            <Link to={`/movies/:${item.id}`}>{item.title}</Link>
-          </li>
-        ))}
-      </ul>
-      {state.loading && <p>...loading</p>}
-      {state.error && <p>...load failed</p>}
+      <ul>{listMovies}</ul>
+      {loading && <p>...loading</p>}
+      {error && <p>...load failed</p>}
     </div>
   );
 };
 export default Movies;
+
+// const data = getMovies();
+
+// data
+//   .then(response => {
+//     console.log(response);
+//     setState(prevState => {
+//       return {
+//         ...prevState,
+//         items: [...response.results],
+//       };
+//     });
+//   })
+//   .catch(error => console.log('Error'))
+//   .finally(
+//     setState(prevState => {
+//       return {
+//         ...prevState,
+//         loading: false,
+//       };
+//     })
+//   );
