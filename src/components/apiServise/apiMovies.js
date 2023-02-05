@@ -6,7 +6,7 @@ const instance = axios.create({
 
 export const getMovies = async () => {
   const { data } = await instance.get(
-    `/trending/all/day?api_key=6de1479941bef67a0c224787b78603f1`
+    `/trending/movie/day?api_key=6de1479941bef67a0c224787b78603f1`
   );
   return data;
 };

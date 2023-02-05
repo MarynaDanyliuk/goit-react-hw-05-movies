@@ -1,11 +1,13 @@
 import { Routes, Route } from 'react-router-dom';
 
-import Menu from '../Menu/Menu';
+// import css from './App.module.css';
 
+import Menu from '../Menu/Menu';
 import HomePage from 'components/pages/HomePage/HomePage';
 import MoviesPage from 'components/pages/MoviesPage/MoviesPage';
-import SingleMoviePage from 'components/pages/MovieDetails/MovieDetails';
+// import SingleMoviePage from 'components/pages/MovieDetails/SingleMoviePage';
 import NotFoundPage from 'components/pages/NotFoundPage/NotFoundPage';
+import MovieDetails from 'components/pages/MovieDetails/MovieDetails';
 
 export const App = () => {
   return (
@@ -13,6 +15,7 @@ export const App = () => {
       style={{
         height: '100vh',
         display: 'flex',
+        flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
         fontSize: 40,
@@ -23,7 +26,7 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/movies" element={<MoviesPage />} />
-        <Route path="/movies/:movieId" element={<SingleMoviePage />} />
+        <Route path="/movies/:movieId" element={<MovieDetails />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>

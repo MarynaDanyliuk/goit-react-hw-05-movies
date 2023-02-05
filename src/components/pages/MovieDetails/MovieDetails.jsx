@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+
+import css from '../MovieDetails/MovieDetails.module.css';
 
 import { getSingleMovie } from 'components/apiServise/apiMovies';
 
@@ -12,6 +14,10 @@ const MovieDetails = () => {
 
   const { movieId } = useParams();
   console.log(movieId);
+
+  const navigate = useNavigate();
+
+  const goBack = () => navigate(-1);
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -57,11 +63,12 @@ const MovieDetails = () => {
   } = state.item;
 
   return (
-    <div className="container">
-      <h2>
-        {title}
-        {release_date}
-      </h2>
+    <div className={css.container}>
+      <button onClick={goBack} type="button">
+        Go back
+      </button>
+      <h2>{title}</h2>
+      <p>{release_date}</p>
       <p>{overview}</p>
       <p>{vote_averag}</p>
       {/* <p>

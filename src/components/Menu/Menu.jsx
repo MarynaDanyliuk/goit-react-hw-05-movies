@@ -21,7 +21,7 @@ const Menu = () => {
             Movies
           </NavLink>
         </li>
-        <li>
+        {/* <li>
           <NavLink className={getClassName} to="/movies/:movieId">
             MovieDetails
           </NavLink>
@@ -35,7 +35,7 @@ const Menu = () => {
           <NavLink className={getClassName} to="/movies/:movieId/reviews">
             Reviews
           </NavLink>
-        </li>
+        </li> */}
       </ul>
     </div>
   );
