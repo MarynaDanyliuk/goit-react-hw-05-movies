@@ -56,7 +56,7 @@ const Movies = () => {
 
   return (
     <div>
-      <ul>{listMovies}</ul>
+      {items.length > 0 && <ul>{listMovies}</ul>}
       {loading && <p>...loading</p>}
       {error && <p>...load failed</p>}
     </div>
