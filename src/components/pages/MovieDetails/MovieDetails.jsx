@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 
 import css from '../MovieDetails/MovieDetails.module.css';
 
@@ -57,8 +57,10 @@ const MovieDetails = () => {
   const {
     title,
     release_date,
+    poster_path,
     overview,
     vote_averag,
+
     // genres: { id, name },
   } = state.item;
 
@@ -71,10 +73,13 @@ const MovieDetails = () => {
       <p>{release_date}</p>
       <p>{overview}</p>
       <p>{vote_averag}</p>
+      <img src={poster_path} alt="pic"></img>
       {/* <p>
         {id}
         {name}
       </p> */}
+      <Link to={`/movies/${movieId}/cast`}>Cast</Link>
+      <Link to={`/movies/${movieId}/reviews`}>Reviews</Link>
     </div>
   );
 };

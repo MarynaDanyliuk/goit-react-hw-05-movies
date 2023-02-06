@@ -1,10 +1,11 @@
-import css from '../HomePage/HomePage.module.css';
+import css from '../MoviesPage/MoviesPage.module.css';
 
 import MoviesSerchForm from '../../MoviesSearchForm/MoviesSearchForm';
 import { searchMovies } from 'components/apiServise/apiMovies';
-import MoviesList from 'components/MovieList/MovieList';
+import MoviesList from 'components/MoviesList/MoviesList';
 
 import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 const MoviesPage = () => {
   const [state, setState] = useState({
@@ -13,7 +14,12 @@ const MoviesPage = () => {
     error: null,
   });
 
-  const [search, setSearch] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const search = searchParams.get('search');
+  console.log(search);
+
+  // const [search, setSearch] = useState('');
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -54,7 +60,8 @@ const MoviesPage = () => {
   }, [search]);
 
   const changeSearch = ({ search }) => {
-    setSearch(search);
+    // setSearch(search);
+    setSearchParams({ search });
   };
 
   console.log(search);

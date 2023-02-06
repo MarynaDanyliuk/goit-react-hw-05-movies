@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 // import { Link } from 'react-router-dom';
 
 import { getMovies } from 'components/apiServise/apiMovies';
-import MoviesList from 'components/MovieList/MovieList';
+import MoviesList from 'components/MoviesList/MoviesList';
 
 const Movies = () => {
   const [state, setState] = useState({
