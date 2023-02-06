@@ -2,6 +2,7 @@ import css from '../HomePage/HomePage.module.css';
 
 import MoviesSerchForm from '../../MoviesSearchForm/MoviesSearchForm';
 import { searchMovies } from 'components/apiServise/apiMovies';
+import MoviesList from 'components/MovieList/MovieList';
 
 import { useState, useEffect } from 'react';
 
@@ -22,7 +23,7 @@ const MoviesPage = () => {
           loading: true,
           error: null,
         }));
-        const result = await searchMovies({ search });
+        const result = await searchMovies(search);
         console.log(result);
         setState(prevState => {
           return {
@@ -62,6 +63,7 @@ const MoviesPage = () => {
     <div className={css.container}>
       <h2>Movies search page</h2>
       <MoviesSerchForm onSubmit={changeSearch} />
+      {state.items.length > 0 && <MoviesList items={state.items} />}
     </div>
   );
 };
