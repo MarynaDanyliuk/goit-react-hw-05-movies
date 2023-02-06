@@ -18,6 +18,13 @@ export const getSingleMovie = async id => {
   return data;
 };
 
+export const searchMovies = async search => {
+  const { data } = await instance.get(
+    `/search/movie?api_key=6de1479941bef67a0c224787b78603f1`
+  );
+  return data;
+};
+
 // /movie/{movie_id}
 
 // export const getMovies = async () => {

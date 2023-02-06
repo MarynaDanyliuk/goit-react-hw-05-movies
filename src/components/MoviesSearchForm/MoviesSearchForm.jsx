@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const MoviesSerchForm = () => {
+const MoviesSerchForm = ({ onSubmit }) => {
   const [state, setState] = useState({
     search: '',
   });
@@ -15,7 +15,7 @@ const MoviesSerchForm = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    onsubmit({ ...state });
+    onSubmit({ ...state });
     setState({
       search: '',
     });
