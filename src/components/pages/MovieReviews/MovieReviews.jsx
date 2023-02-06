@@ -63,6 +63,6 @@ const MovieReviews = () => {
   //   "name": "Drama"
   // }
 
-  return <div className="container">Movie Cast</div>;
+  return <div className="container">Movie Reviews</div>;
 };
 export default MovieReviews;

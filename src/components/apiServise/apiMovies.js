@@ -28,6 +28,13 @@ export const searchMovies = async query => {
   return data;
 };
 
+export const getCastMovie = async id => {
+  const { data } = await instance.get(
+    `/movie/${id}/credits?api_key=6de1479941bef67a0c224787b78603f1`
+  );
+  return data;
+};
+
 // /movie/{movie_id}
 
 // export const getMovies = async () => {

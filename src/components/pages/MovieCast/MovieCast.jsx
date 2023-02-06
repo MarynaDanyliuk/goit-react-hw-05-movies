@@ -1,61 +1,67 @@
-// import { useState, useEffect } from 'react';
-// import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
-// import { getSingleMovie } from 'components/apiServise/apiMovies';
+import { getCastMovie } from 'components/apiServise/apiMovies';
 
 const MovieCast = () => {
-  // const [state, setState] = useState({
-  //   item: {},
-  //   loading: false,
-  //   error: null,
-  // });
+  const [state, setState] = useState({
+    item: {},
+    loading: false,
+    error: null,
+  });
 
-  // const { movieId } = useParams();
-  // console.log(movieId);
+  const { movieId } = useParams();
+  console.log(movieId);
 
-  // useEffect(() => {
-  //   const fetchMovies = async () => {
-  //     try {
-  //       setState(prevState => ({
-  //         ...prevState,
-  //         loading: true,
-  //         error: null,
-  //       }));
-  //       const result = await getSingleMovie(movieId);
-  //       console.log(result);
-  //       setState(prevState => {
-  //         return {
-  //           ...prevState,
-  //           item: result,
-  //         };
-  //       });
-  //     } catch (error) {
-  //       setState(prevState => ({
-  //         ...prevState,
-  //         error,
-  //       }));
-  //     } finally {
-  //       setState(prevState => {
-  //         return {
-  //           ...prevState,
-  //           loading: false,
-  //         };
-  //       });
-  //     }
-  //   };
+  useEffect(() => {
+    const fetchMovies = async () => {
+      try {
+        setState(prevState => ({
+          ...prevState,
+          loading: true,
+          error: null,
+        }));
+        const result = await getCastMovie(movieId);
+        console.log(result);
+        setState(prevState => {
+          return {
+            ...prevState,
+            item: result,
+          };
+        });
+      } catch (error) {
+        setState(prevState => ({
+          ...prevState,
+          error,
+        }));
+      } finally {
+        setState(prevState => {
+          return {
+            ...prevState,
+            loading: false,
+          };
+        });
+      }
+    };
 
-  //   fetchMovies();
+    fetchMovies();
 
-  //   console.log('запускаємо useEffect');
-  // }, [movieId]);
+    console.log('запускаємо useEffect');
+  }, [movieId]);
 
-  // const {
-  //   title,
-  //   release_date,
-  //   overview,
-  //   vote_averag,
-  //   genres: { id, name },
-  // } = state.item;
+  const location = useLocation();
+
+  const { cast } = state.item;
+  console.log(cast);
+
+  // const listMovies = items.map(item => (
+  //   <li key={item.id}>
+  //     <Link state={{ from: location }} to={`/movies/${item.id}`}>
+  //       {item.title}
+  //     </Link>
+  //   </li>
+  // ));
 
   // "genres": [
   // {
@@ -63,6 +69,17 @@ const MovieCast = () => {
   //   "name": "Drama"
   // }
 
-  return <div className="container">Movie Cast</div>;
+  return (
+    <ul className="container">
+      {/* {cast.map(({ id, name, character }) => (
+        <li key={id}>
+          <Link state={{ from: location }} to={`/movies/${movieId}`}>
+            <p>{name}</p>
+            <p>{character}</p>
+          </Link>
+        </li>
+      ))} */}
+    </ul>
+  );
 };
 export default MovieCast;
