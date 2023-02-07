@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 
-// import css from './App.module.css';
+import css from './App.module.css';
 
 import Menu from '../Menu/Menu';
 import HomePage from 'components/pages/HomePage/HomePage';
@@ -12,22 +12,11 @@ import NotFoundPage from 'components/pages/NotFoundPage/NotFoundPage';
 
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101',
-      }}
-    >
+    <div className={css.container}>
       <Menu />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/movies" element={<MoviesPage />} />
-        {/* <Route  /> */}
         <Route path="/movies/:movieId" element={<MovieDetails />}>
           <Route path="cast" element={<MovieCast />} />
           <Route path="reviews" element={<MovieReviews />} />
@@ -37,3 +26,14 @@ export const App = () => {
     </div>
   );
 };
+
+// ___________________
+// style={{
+//   height: '100vh',
+//   display: 'flex',
+//   flexDirection: 'column',
+//   // justifyContent: 'center',
+//   // alignItems: 'center',
+//   fontSize: 40,
+//   color: '#010101',
+// }}

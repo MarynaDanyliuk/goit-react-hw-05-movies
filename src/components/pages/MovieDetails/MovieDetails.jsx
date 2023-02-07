@@ -66,10 +66,10 @@ const MovieDetails = () => {
 
   return (
     <div className={css.container}>
-      <button onClick={goBack} type="button">
+      <button className={css.goback_button} onClick={goBack} type="button">
         Go back
       </button>
-      <h2>{title}</h2>
+      <h2 className={css.page_title}>{title}</h2>
       <p>{release_date}</p>
       <p>{overview}</p>
       <p>{vote_averag}</p>
@@ -78,9 +78,15 @@ const MovieDetails = () => {
         {id}
         {name}
       </p> */}
-      <Link to={`/movies/${movieId}/cast`}>Cast</Link>
-      <Link to={`/movies/${movieId}/reviews`}>Reviews</Link>
-      <Outlet />
+      <div className={css.wrapper}>
+        <Link className={css.link} to={`/movies/${movieId}/cast`}>
+          Cast
+        </Link>
+        <Link className={css.link} to={`/movies/${movieId}/reviews`}>
+          Reviews
+        </Link>
+        <Outlet />
+      </div>
     </div>
   );
 };

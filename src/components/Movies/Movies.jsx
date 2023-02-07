@@ -49,12 +49,6 @@ const Movies = () => {
 
   const { items, loading, error } = state;
 
-  // const listMovies = items.map(item => (
-  //   <li key={item.id}>
-  //     <Link to={`/movies/${item.id}`}>{item.title}</Link>
-  //   </li>
-  // ));
-
   return (
     <div>
       {items.length > 0 && <MoviesList items={items} />}
@@ -65,3 +59,10 @@ const Movies = () => {
   );
 };
 export default Movies;
+
+// ______________________________
+// const listMovies = items.map(item => (
+//   <li key={item.id}>
+//     <Link to={`/movies/${item.id}`}>{item.title}</Link>
+//   </li>
+// ));

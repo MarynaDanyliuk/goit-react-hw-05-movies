@@ -68,7 +68,6 @@ const MoviesPage = () => {
 
   return (
     <div className={css.container}>
-      <h2>Movies search page</h2>
       <MoviesSerchForm onSubmit={changeSearch} />
       {state.items.length > 0 && <MoviesList items={state.items} />}
     </div>

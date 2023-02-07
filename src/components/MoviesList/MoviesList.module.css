@@ -1,0 +1,16 @@
+/* .movie_list {
+  margin-top: 15px;
+} */
+
+.movie_item {
+  margin-bottom: 6px;
+}
+
+.movie_link {
+  font-size: medium;
+}
+
+.movie_link:hover,
+.movie_link:focus {
+  color: var(--accent-txt-color);
+}
