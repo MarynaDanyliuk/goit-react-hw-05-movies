@@ -35,7 +35,12 @@ export const getCastMovie = async id => {
   return data;
 };
 
-// /movie/{movie_id}
+export const getReviewsMovie = async id => {
+  const { data } = await instance.get(
+    `/movie/${id}/reviews?api_key=6de1479941bef67a0c224787b78603f1`
+  );
+  return data;
+};
 
 // export const getMovies = async () => {
 //   const { data } = await axios.get(

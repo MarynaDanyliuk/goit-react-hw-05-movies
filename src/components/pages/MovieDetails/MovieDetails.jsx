@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useParams, Outlet, useNavigate, Link } from 'react-router-dom';
 
 import css from '../MovieDetails/MovieDetails.module.css';
 
@@ -80,6 +80,7 @@ const MovieDetails = () => {
       </p> */}
       <Link to={`/movies/${movieId}/cast`}>Cast</Link>
       <Link to={`/movies/${movieId}/reviews`}>Reviews</Link>
+      <Outlet />
     </div>
   );
 };

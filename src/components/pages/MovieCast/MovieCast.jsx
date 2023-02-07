@@ -4,9 +4,11 @@ import { useParams } from 'react-router-dom';
 
 import { getCastMovie } from 'components/apiServise/apiMovies';
 
+import css from '../MovieCast/MovieCast.module.css';
+
 const MovieCast = () => {
   const [state, setState] = useState({
-    item: {},
+    items: [],
     loading: false,
     error: null,
   });
@@ -27,7 +29,7 @@ const MovieCast = () => {
         setState(prevState => {
           return {
             ...prevState,
-            item: result,
+            items: result.cast,
           };
         });
       } catch (error) {
@@ -50,18 +52,14 @@ const MovieCast = () => {
     console.log('запускаємо useEffect');
   }, [movieId]);
 
-  // const location = useLocation();
+  const { items } = state;
 
-  const { cast } = state.item;
-  console.log(cast);
-
-  // const listMovies = items.map(item => (
-  //   <li key={item.id}>
-  //     <Link state={{ from: location }} to={`/movies/${item.id}`}>
-  //       {item.title}
-  //     </Link>
-  //   </li>
-  // ));
+  const listCast = items.map(({ id, name, character }) => (
+    <li key={id}>
+      <p>Name: {name}</p>
+      <p>Character: {character}</p>
+    </li>
+  ));
 
   // "genres": [
   // {
@@ -70,16 +68,9 @@ const MovieCast = () => {
   // }
 
   return (
-    <ul className="container">
-      {/* {cast.map(({ id, name, character }) => (
-        <li key={id}>
-          <Link state={{ from: location }} to={`/movies/${movieId}`}>
-            <p>{name}</p>
-            <p>{character}</p>
-          </Link>
-        </li>
-      ))} */}
-    </ul>
+    <div className={css.container}>
+      <ul>{listCast}</ul>
+    </div>
   );
 };
 export default MovieCast;
