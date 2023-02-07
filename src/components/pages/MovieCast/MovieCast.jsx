@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Link, useLocation } from 'react-router-dom';
+// import { Link, useLocation } from 'react-router-dom';
 
 import { getCastMovie } from 'components/apiServise/apiMovies';
 
@@ -50,7 +50,7 @@ const MovieCast = () => {
     console.log('запускаємо useEffect');
   }, [movieId]);
 
-  const location = useLocation();
+  // const location = useLocation();
 
   const { cast } = state.item;
   console.log(cast);
