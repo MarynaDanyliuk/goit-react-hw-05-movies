@@ -59,15 +59,12 @@ const MovieDetails = () => {
 
   console.log(genres);
   console.log(poster_path);
-  console.log(release_date);
 
-  // const genresList = genres.map(({ id, name }) => <li key={id}>{name}</li>);
+  const genresList = genres.map(({ id, name }) => <li key={id}>{name}</li>);
 
   const userScore = vote_average * 10;
   const releaseData = new Date(release_date);
   const releaseYear = releaseData.getFullYear();
-
-  console.log(releaseYear);
 
   return (
     <div className={css.container}>
@@ -78,16 +75,16 @@ const MovieDetails = () => {
         <img src={poster_path} alt="pic"></img>
         <div>
           <h2 className={css.page_title}>
-            {title} <time dateTime="YYYY">({releaseYear})</time>
+            {title} ({releaseYear})
           </h2>
           <h3 className={css.section_title}>
             User Score:
             <span className={css.section_data}>{userScore}%</span>
           </h3>
           <h3 className={css.section_title}>Overview:</h3>
-          <p>{overview}</p>
+          <p className={css.section_data}>{overview}</p>
           <h3 className={css.section_title}>Genres:</h3>
-          {/* <ul>{genresList}</ul> */}
+          <ul className={css.section_data}>{genresList}</ul>
           {/* <ul>
             {genres.map(genre => (
               <li key={genre.id}>{genre.name}</li>
@@ -97,6 +94,7 @@ const MovieDetails = () => {
       </div>
 
       <div className={css.wrapper_link}>
+        <h3 className={css.section_title}>Additional information:</h3>
         <Link className={css.link} to={`/movies/${movieId}/cast`}>
           Cast
         </Link>
