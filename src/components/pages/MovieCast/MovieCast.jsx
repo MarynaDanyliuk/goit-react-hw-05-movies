@@ -61,12 +61,6 @@ const MovieCast = () => {
     </li>
   ));
 
-  // "genres": [
-  // {
-  //   "id": 18,
-  //   "name": "Drama"
-  // }
-
   return (
     <div className={css.container}>
       <ul>{listCast}</ul>

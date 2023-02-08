@@ -2,9 +2,7 @@
   display: flex;
   padding: 15px 45px;
   align-items: center;
-  border: 1px solid grey;
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
-    1px 4px 6px rgba(0, 0, 0, 0.16);
+  box-shadow: var(--box-shadow);
 }
 
 .menu {
@@ -15,6 +13,11 @@
 .link {
   display: inline-block;
   margin-right: 15px;
+}
+
+.link:hover,
+.link:focus {
+  color: var(--accent-txt-color);
 }
 
 .link.active {

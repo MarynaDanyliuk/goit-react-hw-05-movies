@@ -6,6 +6,19 @@
   margin-bottom: 12px;
 }
 
+.section_title {
+  font-size: medium;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.section_data {
+  font-family: var(--primary-font-family);
+  /* font-size: 18px; */
+  font-weight: 400;
+  margin-left: 6px;
+}
+
 .goback_button {
   padding: 0;
   display: inline-block;
@@ -16,7 +29,7 @@
   color: white;
   background-color: var(--primary-txt-color);
   background-position: center;
-  opacity: 0.5;
+  opacity: 0.6;
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   outline: none;
@@ -25,9 +38,10 @@
 
 .goback_button:hover {
   background-color: var(--accent-txt-color);
+  box-shadow: var(--box-shadow);
 }
 
-.wrapper {
+.wrapper_link {
   display: flex;
   flex-direction: column;
   margin-top: 20px;
@@ -36,4 +50,8 @@
 
 .link {
   margin-bottom: 6px;
+}
+
+.wrapper_movie {
+  display: flex;
 }

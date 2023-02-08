@@ -66,11 +66,17 @@ const MoviesPage = () => {
 
   console.log(search);
 
+  const { items } = state;
+
   return (
     <div className={css.container}>
       <MoviesSerchForm onSubmit={changeSearch} />
-      {state.items.length > 0 && <MoviesList items={state.items} />}
+      {items.length > 0 && <MoviesList items={items} />}
     </div>
   );
 };
 export default MoviesPage;
+
+MoviesPage.defaultProps = {
+  items: [],
+};
