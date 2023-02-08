@@ -1,5 +1,11 @@
 import { useState, useEffect } from 'react';
-import { useParams, Outlet, useNavigate, NavLink } from 'react-router-dom';
+import {
+  useParams,
+  Outlet,
+  useNavigate,
+  NavLink,
+  useLocation,
+} from 'react-router-dom';
 
 import css from '../MovieDetails/MovieDetails.module.css';
 
@@ -18,6 +24,9 @@ const MovieDetails = () => {
   const navigate = useNavigate();
 
   const goBack = () => navigate(-1);
+
+  const location = useLocation();
+  console.log(location);
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -67,6 +76,8 @@ const MovieDetails = () => {
   console.log(poster_path);
 
   // const genresList = genres.map(({ id, name }) => <li key={id}>{name}</li>);
+
+  // console.log(genresList);
 
   const userScore = (vote_average * 10).toFixed();
   const releaseData = new Date(release_date);

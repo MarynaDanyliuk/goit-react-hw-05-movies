@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import css from './App.module.css';
 
 import Menu from '../Menu/Menu';
+
 import HomePage from 'components/pages/HomePage/HomePage';
 import MoviesPage from 'components/pages/MoviesPage/MoviesPage';
 import MovieDetails from 'components/pages/MovieDetails/MovieDetails';
