@@ -116,5 +116,7 @@ const MovieDetails = () => {
 export default MovieDetails;
 
 MovieDetails.defaultProps = {
-  genres: [],
+  item: {},
+  loading: false,
+  error: null,
 };
