@@ -57,14 +57,14 @@ const MovieReviews = () => {
 
   const listReviews = items.map(({ id, author, content }) => (
     <li key={id}>
-      <p>Author: {author}</p>
-      <p>Review: {content}</p>
+      <p className={css.section_data}>Author: {author}</p>
+      <p className={css.section_data}>Review: {content}</p>
     </li>
   ));
 
   return (
-    <div className={css.container}>
-      <ul>{listReviews}</ul>
+    <div>
+      <ul className={css.movie_list}>{listReviews}</ul>
     </div>
   );
 };

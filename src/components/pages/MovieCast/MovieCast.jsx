@@ -56,14 +56,14 @@ const MovieCast = () => {
 
   const listCast = items.map(({ id, name, character }) => (
     <li key={id}>
-      <p>Name: {name}</p>
-      <p>Character: {character}</p>
+      <p className={css.section_data}>Name: {name}</p>
+      <p className={css.section_data}>Character: {character}</p>
     </li>
   ));
 
   return (
-    <div className={css.container}>
-      <ul>{listCast}</ul>
+    <div>
+      <ul className={css.movie_list}>{listCast}</ul>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, Outlet, useNavigate, Link } from 'react-router-dom';
+import { useParams, Outlet, useNavigate, NavLink } from 'react-router-dom';
 
 import css from '../MovieDetails/MovieDetails.module.css';
 
@@ -54,15 +54,21 @@ const MovieDetails = () => {
 
     console.log('запускаємо useEffect');
   }, [movieId]);
+
+  const getClassName = ({ isActive }) => {
+    const className = isActive ? `${css.link} ${css.active}` : css.link;
+    return className;
+  };
+
   const { title, release_date, poster_path, overview, vote_average, genres } =
     state.item;
 
   console.log(genres);
   console.log(poster_path);
 
-  const genresList = genres.map(({ id, name }) => <li key={id}>{name}</li>);
+  // const genresList = genres.map(({ id, name }) => <li key={id}>{name}</li>);
 
-  const userScore = vote_average * 10;
+  const userScore = (vote_average * 10).toFixed();
   const releaseData = new Date(release_date);
   const releaseYear = releaseData.getFullYear();
 
@@ -84,7 +90,7 @@ const MovieDetails = () => {
           <h3 className={css.section_title}>Overview:</h3>
           <p className={css.section_data}>{overview}</p>
           <h3 className={css.section_title}>Genres:</h3>
-          <ul className={css.section_data}>{genresList}</ul>
+          {/* <ul className={css.section_data}>{genresList}</ul> */}
           {/* <ul>
             {genres.map(genre => (
               <li key={genre.id}>{genre.name}</li>
@@ -95,12 +101,12 @@ const MovieDetails = () => {
 
       <div className={css.wrapper_link}>
         <h3 className={css.section_title}>Additional information:</h3>
-        <Link className={css.link} to={`/movies/${movieId}/cast`}>
+        <NavLink className={getClassName} to={`/movies/${movieId}/cast`}>
           Cast
-        </Link>
-        <Link className={css.link} to={`/movies/${movieId}/reviews`}>
+        </NavLink>
+        <NavLink className={getClassName} to={`/movies/${movieId}/reviews`}>
           Reviews
-        </Link>
+        </NavLink>
         <Outlet />
       </div>
     </div>

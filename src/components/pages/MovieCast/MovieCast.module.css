@@ -1,6 +1,10 @@
 .container {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: large;
-  height: 100vh;
-  /* width: 600px; */
+  padding: 15px 45px;
+  color: var(--primary-txt-color);
+}
+
+.section_data {
+  font-family: var(--primary-font-family);
+  font-size: medium;
+  font-weight: 400;
 }

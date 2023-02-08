@@ -14,7 +14,7 @@
 
 .section_data {
   font-family: var(--primary-font-family);
-  /* font-size: 18px; */
+  font-size: medium;
   font-weight: 400;
   margin-left: 6px;
 }
@@ -48,10 +48,20 @@
   margin-bottom: 20px;
 }
 
+.wrapper_movie {
+  display: flex;
+}
+
 .link {
+  display: inline-block;
   margin-bottom: 6px;
 }
 
-.wrapper_movie {
-  display: flex;
+.link:hover,
+.link:focus {
+  color: var(--accent-txt-color);
+}
+
+.link.active {
+  color: var(--accent-txt-color);
 }
