@@ -64,7 +64,11 @@ const MovieReviews = () => {
 
   return (
     <div>
-      <ul className={css.movie_list}>{listReviews}</ul>
+      {items.length > 0 ? (
+        <ul className={css.movie_list}>{listReviews}</ul>
+      ) : (
+        <p>There is no feedback</p>
+      )}
     </div>
   );
 };

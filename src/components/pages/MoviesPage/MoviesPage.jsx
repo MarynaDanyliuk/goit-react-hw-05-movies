@@ -17,7 +17,7 @@ const MoviesPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const search = searchParams.get('search');
-  console.log(search);
+  // console.log(search);
 
   // const [search, setSearch] = useState('');
 
@@ -64,7 +64,7 @@ const MoviesPage = () => {
     setSearchParams({ search });
   };
 
-  console.log(search);
+  // console.log(search);
 
   const { items } = state;
 

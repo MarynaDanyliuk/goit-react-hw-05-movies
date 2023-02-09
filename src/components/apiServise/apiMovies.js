@@ -19,7 +19,7 @@ export const getSingleMovie = async id => {
 };
 
 export const searchMovies = async query => {
-  const { data } = await instance.get(`/search/movie/`, {
+  const { data } = await instance.get(`/search/movie`, {
     params: {
       query,
       api_key: '6de1479941bef67a0c224787b78603f1',
