@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-// import { Link } from 'react-router-dom';
 
 import { getMovies } from 'components/apiServise/apiMovies';
 import MoviesList from 'components/MoviesList/MoviesList';
@@ -52,7 +51,6 @@ const Movies = () => {
   return (
     <div>
       {items.length > 0 && <MoviesList items={items} />}
-      {/* {items.length > 0 && <ul>{listMovies}</ul>} */}
       {loading && <p>...loading</p>}
       {error && <p>...load failed</p>}
     </div>
@@ -66,3 +64,5 @@ export default Movies;
 //     <Link to={`/movies/${item.id}`}>{item.title}</Link>
 //   </li>
 // ));
+
+/* {items.length > 0 && <ul>{listMovies}</ul>} */

@@ -26,6 +26,7 @@ const MovieDetails = () => {
   console.log(location.state);
 
   useEffect(() => {
+    console.log('запускаємо useEffect');
     const fetchMovies = async () => {
       try {
         setState(prevState => ({
@@ -33,12 +34,11 @@ const MovieDetails = () => {
           loading: true,
           error: null,
         }));
-        const result = await getSingleMovie(movieId);
-        console.log(result);
+        const data = await getSingleMovie(movieId);
         setState(prevState => {
           return {
             ...prevState,
-            item: result,
+            item: data,
           };
         });
       } catch (error) {
@@ -57,9 +57,10 @@ const MovieDetails = () => {
     };
 
     fetchMovies();
+  }, [movieId, setState]);
 
-    console.log('запускаємо useEffect');
-  }, [movieId]);
+  const { title, release_date, poster_path, overview, vote_average, genres } =
+    state.item;
 
   const getClassName = ({ isActive }) => {
     const className = isActive ? `${css.link} ${css.active}` : css.link;
@@ -70,16 +71,11 @@ const MovieDetails = () => {
 
   const goBack = () => navigate(location.state.from.pathname);
 
-  const { title, release_date, poster_path, overview, vote_average, genres } =
-    state.item;
+  let genresListAll = genres || [];
 
-  console.log(genres);
-  console.log(poster_path);
-
-  // const genresList = genres.map(({ id, name }) => <li key={id}>{name}</li>);
-
-  // console.log(genresList);
-
+  const genresList = genresListAll.map(({ id, name }) => (
+    <li key={id}>{name}</li>
+  ));
   const userScore = (vote_average * 10).toFixed();
   const releaseData = new Date(release_date);
   const releaseYear = releaseData.getFullYear();
@@ -90,7 +86,7 @@ const MovieDetails = () => {
         Go back
       </button>
       <div className={css.wrapper_movie}>
-        {/* <img src={poster_path} alt="pic"></img> */}
+        <img src={poster_path} alt="pic"></img>
         <div>
           <h2 className={css.page_title}>
             {title} ({releaseYear})
@@ -102,12 +98,9 @@ const MovieDetails = () => {
           <h3 className={css.section_title}>Overview:</h3>
           <p className={css.section_data}>{overview}</p>
           <h3 className={css.section_title}>Genres:</h3>
-          {/* <ul className={css.section_data}>{genresList}</ul> */}
-          {/* <ul>
-            {genres.map(genre => (
-              <li key={genre.id}>{genre.name}</li>
-            ))}
-          </ul> */}
+          {genresListAll.length > 0 && (
+            <ul className={css.section_data}>{genresList}</ul>
+          )}
         </div>
       </div>
 
@@ -135,8 +128,8 @@ const MovieDetails = () => {
 
 export default MovieDetails;
 
-MovieDetails.defaultProps = {
-  item: {},
-  loading: false,
-  error: null,
-};
+// MovieDetails.defaultProps = {
+//   item: {},
+//   loading: false,
+//   error: null,
+// };

@@ -21,21 +21,6 @@ const Menu = () => {
             Movies
           </NavLink>
         </li>
-        {/* <li>
-          <NavLink className={getClassName} to="/movies/:movieId">
-            MovieDetails
-          </NavLink>
-        </li>
-        <li>
-          <NavLink className={getClassName} to="/movies/:movieId/cast">
-            Cast
-          </NavLink>
-        </li>
-        <li>
-          <NavLink className={getClassName} to="/movies/:movieId/reviews">
-            Reviews
-          </NavLink>
-        </li> */}
       </ul>
     </div>
   );
@@ -50,3 +35,19 @@ export default Menu;
 //         <li>
 //           <a href="/movies/:movieId/reviews">Reviews</a>
 //         </li>
+// ______________________________________
+/* <li>
+          <NavLink className={getClassName} to="/movies/:movieId">
+            MovieDetails
+          </NavLink>
+        </li>
+        <li>
+          <NavLink className={getClassName} to="/movies/:movieId/cast">
+            Cast
+          </NavLink>
+        </li>
+        <li>
+          <NavLink className={getClassName} to="/movies/:movieId/reviews">
+            Reviews
+          </NavLink>
+        </li> */
