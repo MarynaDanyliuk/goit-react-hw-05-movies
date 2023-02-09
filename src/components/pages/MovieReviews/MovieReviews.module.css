@@ -1,0 +1,11 @@
+.section_data {
+  font-family: var(--primary-font-family);
+  font-size: medium;
+  font-weight: 400;
+}
+
+.author_data {
+  font-family: var(--primary-font-family);
+  font-size: medium;
+  font-weight: bold;
+}

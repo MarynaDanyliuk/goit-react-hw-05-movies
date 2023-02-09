@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import { getReviewsMovie } from 'components/apiServise/apiMovies';
 
-import css from '../MovieCast/MovieCast.module.css';
+import css from 'components/pages/MovieReviews/MovieReviews.module.css';
 
 const MovieReviews = () => {
   const [state, setState] = useState({
@@ -57,7 +57,7 @@ const MovieReviews = () => {
 
   const listReviews = items.map(({ id, author, content }) => (
     <li key={id}>
-      <p className={css.section_data}>Author: {author}</p>
+      <p className={css.author_data}>Author: {author}</p>
       <p className={css.section_data}>Review: {content}</p>
     </li>
   ));
@@ -67,7 +67,7 @@ const MovieReviews = () => {
       {items.length > 0 ? (
         <ul className={css.movie_list}>{listReviews}</ul>
       ) : (
-        <p>There is no feedback</p>
+        <p>There is no feedback for this movie</p>
       )}
     </div>
   );

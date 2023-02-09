@@ -22,8 +22,10 @@ const MovieDetails = () => {
   console.log(movieId);
 
   const location = useLocation();
-  console.log(location);
+  // console.log(location);
   console.log(location.state);
+
+  const from = location.state?.from || '/movies';
 
   useEffect(() => {
     console.log('запускаємо useEffect');
@@ -69,12 +71,16 @@ const MovieDetails = () => {
 
   const navigate = useNavigate();
 
-  const goBack = () => navigate(location.state.from.pathname);
+  // const goBack = () => navigate(location.state.from.pathname);
+
+  const goBack = () => navigate(from);
 
   let genresListAll = genres || [];
 
   const genresList = genresListAll.map(({ id, name }) => (
-    <li key={id}>{name}</li>
+    <li className={css.genre_item} key={id}>
+      {name}
+    </li>
   ));
   const userScore = (vote_average * 10).toFixed();
   const releaseData = new Date(release_date);
@@ -91,15 +97,12 @@ const MovieDetails = () => {
           <h2 className={css.page_title}>
             {title} ({releaseYear})
           </h2>
-          <h3 className={css.section_title}>
-            User Score:
-            <span className={css.section_data}>{userScore}%</span>
-          </h3>
+          <p className={css.section_data}>User score: {userScore}%</p>
           <h3 className={css.section_title}>Overview:</h3>
           <p className={css.section_data}>{overview}</p>
           <h3 className={css.section_title}>Genres:</h3>
           {genresListAll.length > 0 && (
-            <ul className={css.section_data}>{genresList}</ul>
+            <ul className={css.genres}>{genresList}</ul>
           )}
         </div>
       </div>
@@ -107,14 +110,14 @@ const MovieDetails = () => {
       <div className={css.wrapper_link}>
         <h3 className={css.section_title}>Additional information:</h3>
         <NavLink
-          state={location.state}
+          state={{ from }}
           className={getClassName}
           to={`/movies/${movieId}/cast`}
         >
           Cast
         </NavLink>
         <NavLink
-          state={location.state}
+          state={{ from }}
           className={getClassName}
           to={`/movies/${movieId}/reviews`}
         >

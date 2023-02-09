@@ -55,15 +55,15 @@ const MovieCast = () => {
   const { items } = state;
 
   const listCast = items.map(({ id, name, character }) => (
-    <li key={id}>
-      <p className={css.section_data}>Name: {name}</p>
-      <p className={css.section_data}>Character: {character}</p>
+    <li className={css.cast_item} key={id}>
+      <p className={css.cast_data}>Name: {name}</p>
+      <p className={css.cast_data}>Character: {character}</p>
     </li>
   ));
 
   return (
     <div>
-      <ul className={css.movie_list}>{listCast}</ul>
+      <ul className={css.cast_list}>{listCast}</ul>
     </div>
   );
 };

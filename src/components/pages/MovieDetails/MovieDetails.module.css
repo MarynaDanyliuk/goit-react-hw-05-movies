@@ -4,6 +4,7 @@
 }
 .page_title {
   margin-bottom: 12px;
+  font-weight: bold;
 }
 
 .section_title {
@@ -16,7 +17,15 @@
   font-family: var(--primary-font-family);
   font-size: medium;
   font-weight: 400;
-  margin-left: 6px;
+}
+
+.genres {
+  display: flex;
+  font-size: medium;
+}
+
+.genre_item {
+  margin-right: 6px;
 }
 
 .goback_button {

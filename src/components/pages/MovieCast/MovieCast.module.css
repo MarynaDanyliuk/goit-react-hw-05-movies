@@ -3,8 +3,17 @@
   color: var(--primary-txt-color);
 }
 
-.section_data {
+.cast_list {
+  margin-top: 15px;
+}
+
+.cast_item {
+  margin-bottom: 10px;
+}
+
+.cast_data {
   font-family: var(--primary-font-family);
   font-size: medium;
   font-weight: 400;
+  margin: 0;
 }
