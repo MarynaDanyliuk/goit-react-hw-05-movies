@@ -21,12 +21,9 @@ const MovieDetails = () => {
   const { movieId } = useParams();
   console.log(movieId);
 
-  const navigate = useNavigate();
-
-  const goBack = () => navigate(-1);
-
   const location = useLocation();
   console.log(location);
+  console.log(location.state);
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -69,6 +66,10 @@ const MovieDetails = () => {
     return className;
   };
 
+  const navigate = useNavigate();
+
+  const goBack = () => navigate(location.state.from.pathname);
+
   const { title, release_date, poster_path, overview, vote_average, genres } =
     state.item;
 
@@ -89,7 +90,7 @@ const MovieDetails = () => {
         Go back
       </button>
       <div className={css.wrapper_movie}>
-        <img src={poster_path} alt="pic"></img>
+        {/* <img src={poster_path} alt="pic"></img> */}
         <div>
           <h2 className={css.page_title}>
             {title} ({releaseYear})
@@ -112,10 +113,18 @@ const MovieDetails = () => {
 
       <div className={css.wrapper_link}>
         <h3 className={css.section_title}>Additional information:</h3>
-        <NavLink className={getClassName} to={`/movies/${movieId}/cast`}>
+        <NavLink
+          state={location.state}
+          className={getClassName}
+          to={`/movies/${movieId}/cast`}
+        >
           Cast
         </NavLink>
-        <NavLink className={getClassName} to={`/movies/${movieId}/reviews`}>
+        <NavLink
+          state={location.state}
+          className={getClassName}
+          to={`/movies/${movieId}/reviews`}
+        >
           Reviews
         </NavLink>
         <Outlet />
