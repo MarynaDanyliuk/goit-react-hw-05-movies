@@ -22,8 +22,8 @@ const MovieDetails = () => {
   console.log(movieId);
 
   const location = useLocation();
-  // console.log(location);
-  console.log(location.state);
+
+  // console.log(location.state);
 
   const from = location.state?.from || '/movies';
 
