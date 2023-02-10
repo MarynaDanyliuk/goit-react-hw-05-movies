@@ -68,7 +68,9 @@ const MovieCast = () => {
       ) : (
         <img
           className={css.details__img}
-          src={'src/img/default_User.png'}
+          src={
+            'https://raw.githubusercontent.com/MarynaDanyliuk/goit-react-hw-05-movies/main/src/img/default_User.jpg'
+          }
           alt={name}
           width="150px"
           height="220px"
