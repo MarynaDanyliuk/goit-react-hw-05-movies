@@ -18,23 +18,33 @@ export const getSingleMovie = async id => {
   return data;
 };
 
-// export async function searchMovies(value) {
+//api.themoviedb.org/3/movie/{movie_id}/images?api_key=<<api_key>>&language=en-US
+
+// export const getImagesMovie = async (id, value) => {
 //   const res = await fetch(
-//     `https://api.themoviedb.org/3/search/movie?api_key=6de1479941bef67a0c224787b78603f1&language=en-US&query=${value}&page=1&include_adult=false`
+//     `https://api.themoviedb.org/3/search/movie${id}?api_key=6de1479941bef67a0c224787b78603f1&language=en-US&query=${value}&page=1&include_adult=false`
 //   );
 //   const info = await res.json();
 //   return info;
-// }
+// };
 
-export const searchMovies = async query => {
-  const { data } = await instance.get(`/search/movie/`, {
-    params: {
-      query,
-      api_key: '6de1479941bef67a0c224787b78603f1',
-    },
-  });
-  return data;
-};
+export async function searchMovies(value) {
+  const res = await fetch(
+    `https://api.themoviedb.org/3/search/movie?api_key=6de1479941bef67a0c224787b78603f1&language=en-US&query=${value}&page=1&include_adult=false`
+  );
+  const info = await res.json();
+  return info;
+}
+
+// export const searchMovies = async query => {
+//   const { data } = await instance.get(`/search/movie/`, {
+//     params: {
+//       query,
+//       api_key: '6de1479941bef67a0c224787b78603f1',
+//     },
+//   });
+//   return data;
+// };
 
 export const getCastMovie = async id => {
   const { data } = await instance.get(

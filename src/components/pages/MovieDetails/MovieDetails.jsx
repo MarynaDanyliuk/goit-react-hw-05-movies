@@ -9,11 +9,15 @@ import {
 
 import css from '../MovieDetails/MovieDetails.module.css';
 
-import { getSingleMovie } from 'components/apiServise/apiMovies';
+import {
+  // getImagesMovie,
+  getSingleMovie,
+} from 'components/apiServise/apiMovies';
 
 const MovieDetails = () => {
   const [state, setState] = useState({
     item: {},
+    image: null,
     loading: false,
     error: null,
   });
@@ -37,10 +41,12 @@ const MovieDetails = () => {
           error: null,
         }));
         const data = await getSingleMovie(movieId);
+        // const imageMovie = await getImagesMovie(movieId);
         setState(prevState => {
           return {
             ...prevState,
             item: data,
+            // image: imageMovie,
           };
         });
       } catch (error) {
@@ -61,8 +67,10 @@ const MovieDetails = () => {
     fetchMovies();
   }, [movieId, setState]);
 
-  const { title, release_date, poster_path, overview, vote_average, genres } =
-    state.item;
+  const { title, release_date, overview, vote_average, genres } = state.item;
+  // console.log(state.image);
+
+  // console.log(poster_path);
 
   const getClassName = ({ isActive }) => {
     const className = isActive ? `${css.link} ${css.active}` : css.link;
@@ -76,7 +84,6 @@ const MovieDetails = () => {
   const goBack = () => navigate(from);
 
   let genresListAll = genres || [];
-
   const genresList = genresListAll.map(({ id, name }) => (
     <li className={css.genre_item} key={id}>
       {name}
@@ -85,6 +92,7 @@ const MovieDetails = () => {
   const userScore = (vote_average * 10).toFixed();
   const releaseData = new Date(release_date);
   const releaseYear = releaseData.getFullYear();
+  // const urlMovie = backdrop_path || '/fCayJrkfRaCRCTh8GqN30f8oyQF.jpg';
 
   return (
     <div className={css.container}>
@@ -92,7 +100,10 @@ const MovieDetails = () => {
         Go back
       </button>
       <div className={css.wrapper_movie}>
-        <img src={poster_path} alt="pic"></img>
+        <img
+          // src={`https://api.themoviedb.org/3/movie/529892?api_key=6de1479941bef67a0c224787b78603f1&/fCayJrkfRaCRCTh8GqN30f8oyQF.jpg`}
+          alt="pic"
+        ></img>
         <div>
           <h2 className={css.page_title}>
             {title} ({releaseYear})
