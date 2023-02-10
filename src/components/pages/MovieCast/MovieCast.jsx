@@ -53,7 +53,7 @@ const MovieCast = () => {
   }, [movieId]);
 
   const { items } = state;
-  const noProfileImg = 'src/img/default_image_large.png';
+  // const noProfileImg = 'src/img/default_image_large.jpg';
 
   const listCast = items.map(({ id, name, character, profile_path }) => (
     <li className={css.cast_item} key={id}>
@@ -68,7 +68,7 @@ const MovieCast = () => {
       ) : (
         <img
           className={css.details__img}
-          src={noProfileImg}
+          src={'src/img/default_User.png'}
           alt={name}
           width="150px"
           height="220px"

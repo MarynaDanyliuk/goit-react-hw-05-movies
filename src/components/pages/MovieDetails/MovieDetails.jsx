@@ -109,7 +109,7 @@ const MovieDetails = () => {
         ) : (
           <img
             className={css.details__img}
-            src={'src/img/default_image_large.png'}
+            src={'src/img/default_User.png'}
             alt="not available"
             width="300px"
             height="450px"
