@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/816.43660591.chunk.css","mappings":"AAAA,+BAEE,8BAA+B,CAD/B,iBAEF,CAEA,gCACE,kBACF","sources":["components/pages/NotFoundPage/NotFoundPage.module.css"],"sourcesContent":[".container {\n  padding: 15px 45px;\n  color: var(--primary-txt-color);\n}\n\n.page_title {\n  margin-bottom: 12px;\n}\n"],"names":[],"sourceRoot":""}
