@@ -74,3 +74,7 @@
 .link.active {
   color: var(--accent-txt-color);
 }
+
+.details__img {
+  padding-right: 15px;
+}

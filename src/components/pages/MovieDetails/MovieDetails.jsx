@@ -8,11 +8,9 @@ import {
 } from 'react-router-dom';
 
 import css from '../MovieDetails/MovieDetails.module.css';
+// import default_image_large from 'src/img/default_image_large.png';
 
-import {
-  // getImagesMovie,
-  getSingleMovie,
-} from 'components/apiServise/apiMovies';
+import { getSingleMovie } from 'components/apiServise/apiMovies';
 
 const MovieDetails = () => {
   const [state, setState] = useState({
@@ -27,8 +25,6 @@ const MovieDetails = () => {
 
   const location = useLocation();
 
-  // console.log(location.state);
-
   const from = location.state?.from || '/movies';
 
   useEffect(() => {
@@ -41,12 +37,10 @@ const MovieDetails = () => {
           error: null,
         }));
         const data = await getSingleMovie(movieId);
-        // const imageMovie = await getImagesMovie(movieId);
         setState(prevState => {
           return {
             ...prevState,
             item: data,
-            // image: imageMovie,
           };
         });
       } catch (error) {
@@ -67,10 +61,15 @@ const MovieDetails = () => {
     fetchMovies();
   }, [movieId, setState]);
 
-  const { title, release_date, overview, vote_average, genres } = state.item;
-  // console.log(state.image);
-
-  // console.log(poster_path);
+  const {
+    original_title,
+    title,
+    release_date,
+    overview,
+    vote_average,
+    genres,
+    poster_path,
+  } = state.item;
 
   const getClassName = ({ isActive }) => {
     const className = isActive ? `${css.link} ${css.active}` : css.link;
@@ -92,7 +91,6 @@ const MovieDetails = () => {
   const userScore = (vote_average * 10).toFixed();
   const releaseData = new Date(release_date);
   const releaseYear = releaseData.getFullYear();
-  // const urlMovie = backdrop_path || '/fCayJrkfRaCRCTh8GqN30f8oyQF.jpg';
 
   return (
     <div className={css.container}>
@@ -100,10 +98,23 @@ const MovieDetails = () => {
         Go back
       </button>
       <div className={css.wrapper_movie}>
-        <img
-          // src={`https://api.themoviedb.org/3/movie/529892?api_key=6de1479941bef67a0c224787b78603f1&/fCayJrkfRaCRCTh8GqN30f8oyQF.jpg`}
-          alt="pic"
-        ></img>
+        {poster_path ? (
+          <img
+            className={css.details__img}
+            src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+            alt={original_title}
+            width="300px"
+            height="450px"
+          />
+        ) : (
+          <img
+            className={css.details__img}
+            src={'src/img/default_image_large.png'}
+            alt="not available"
+            width="300px"
+            height="450px"
+          />
+        )}
         <div>
           <h2 className={css.page_title}>
             {title} ({releaseYear})

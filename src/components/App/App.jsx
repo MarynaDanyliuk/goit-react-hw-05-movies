@@ -23,7 +23,7 @@ export const App = () => {
     <div className={css.container}>
       <Menu />
       <Suspense>
-        <Routes basename="/goit-react-hw-05-movies">
+        <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/movies" element={<MoviesPage />} />
           <Route path="/movies/:movieId" element={<MovieDetails />}>

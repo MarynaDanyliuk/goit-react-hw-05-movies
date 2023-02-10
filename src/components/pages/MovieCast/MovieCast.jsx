@@ -53,9 +53,27 @@ const MovieCast = () => {
   }, [movieId]);
 
   const { items } = state;
+  const noProfileImg = 'src/img/default_image_large.png';
 
-  const listCast = items.map(({ id, name, character }) => (
+  const listCast = items.map(({ id, name, character, profile_path }) => (
     <li className={css.cast_item} key={id}>
+      {profile_path ? (
+        <img
+          className={css.details__img}
+          src={`https://image.tmdb.org/t/p/w500${profile_path}`}
+          alt={name}
+          width="150px"
+          height="220px"
+        />
+      ) : (
+        <img
+          className={css.details__img}
+          src={noProfileImg}
+          alt={name}
+          width="150px"
+          height="220px"
+        />
+      )}
       <p className={css.cast_data}>Name: {name}</p>
       <p className={css.cast_data}>Character: {character}</p>
     </li>
