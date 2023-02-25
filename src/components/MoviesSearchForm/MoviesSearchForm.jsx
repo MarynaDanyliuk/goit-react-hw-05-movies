@@ -1,7 +1,12 @@
 import { useState } from 'react';
+// import { useSearchParams } from 'react-router-dom';
 import css from 'components/MoviesSearchForm/MoviesSearchForm.module.css';
 
 const MoviesSerchForm = ({ onSubmit }) => {
+  // const [searchParams, setSearchParams] = useSearchParams();
+  // const search = searchParams.get('search');
+  // setSearchParams({ search });
+
   const [state, setState] = useState({
     search: '',
   });
@@ -17,9 +22,9 @@ const MoviesSerchForm = ({ onSubmit }) => {
   const handleSubmit = event => {
     event.preventDefault();
     onSubmit({ ...state });
-    setState({
-      search: '',
-    });
+    // setState({
+    //   search: '',
+    // });
   };
 
   return (

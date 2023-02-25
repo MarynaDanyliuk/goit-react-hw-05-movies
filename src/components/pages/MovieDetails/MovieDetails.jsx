@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import {
   useParams,
   Outlet,
@@ -147,7 +147,9 @@ const MovieDetails = () => {
         >
           Reviews
         </NavLink>
-        <Outlet />
+        <Suspense>
+          <Outlet />
+        </Suspense>
       </div>
     </div>
   );
